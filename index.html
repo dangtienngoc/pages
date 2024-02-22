@@ -94,23 +94,26 @@
             return 'Mã không hợp lệ. Ký tự thứ tư không hợp lệ.';
     }
 
-    // Ký tự thứ năm
-    switch (code[4]) {
-        case '3':
-            info += '3 chương trình rửa\n';
-            break;
-        case '4':
-            info += '4 chương trình rửa\n';
-            break;
-        case '5':
-            info += '5 chương trình rửa\n';
-            break;
-        case '6':
-            info += '6 chương trình rửa\n';
-            break;
-        default:
-            return 'Mã không hợp lệ. Ký tự thứ năm không hợp lệ.';
-    }
+   // Ký tự thứ năm
+  switch (code[4]) {
+      case 'I':
+          info += 'ExtraDry\n';
+          break;
+      case 'E':
+          info += 'ExtraDry kết hợp EfficientDry\n';
+          break;
+      case 'H':
+          info += 'Extra và HeatExchange\n';
+          break;
+      case 'Z':
+          info += 'ExtraDry, HeatExchange cùng Zeolith\n';
+          break;
+      case 'Y':
+          info += 'ExtraDry, HeatExchange, EfficientDry và Zeolith\n';
+          break;
+      default:
+          return 'Mã không hợp lệ. Ký tự thứ năm không hợp lệ.';
+  }
 
     // Ký tự thứ sáu
     switch (code[5]) {
