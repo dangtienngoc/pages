@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if (!code) {
       result.innerHTML = "Nhập mã sp";
     } else {
-      result.innerHTML = getDishwasherInfo(code.toUpperCase());
+      result.innerText = getDishwasherInfo(code.toUpperCase());
     }
 
   });
