@@ -2,8 +2,280 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
+  <title>Dishwasher</title>
 </head>
 <body>
+  <div>
+    <input id="input" type="text" placeholder="Mã máy rửa bát" value=""> <br>
+    <button id="button">Check</button> <br>
+    <div id="result"></div>
+  </div>
+  <script>
+    function getDishwasherInfo(code) {
+    if (code.length !== 10) {
+        return 'Mã không hợp lệ. Mã phải có 10 ký tự.';
+    }
+
+    let info = '';
+
+    // Ký tự đầu tiên
+    if (code[0] === 'S') {
+        info += 'Máy rửa bát\n';
+    } else {
+        return 'Mã không hợp lệ. Mã phải bắt đầu bằng "S".';
+    }
+
+    // Ký tự thứ hai
+    switch (code[1]) {
+        case 'M':
+            info += 'Kích thước W600 x H815/845mm\n';
+            break;
+        case 'P':
+            info += 'Kích thước W450 x H815/845mm\n';
+            break;
+        case 'B':
+            info += 'Kích thước W600 x H865/895mm\n';
+            break;
+        case 'K':
+            info += 'Kích thước W550 x H450 x S500mm\n';
+            break;
+        case 'G':
+            info += 'Kích thước đặc biệt\n';
+            break;
+        case 'C':
+            info += 'Kích thước W600 x H600mm\n';
+            break;
+        default:
+            return 'Mã không hợp lệ. Ký tự thứ hai không hợp lệ.';
+    }
+
+    // Ký tự thứ ba
+    switch (code[2]) {
+        case 'D':
+            info += 'Máy rửa bát âm tủ hoàn toàn, có chức năng nhấn để mở cửa.\n';
+            break;
+        case 'E':
+            info += 'Máy rửa bát với bản lề Vario, có thể thay đổi chiều cao cánh cửa.\n';
+            break;
+        case 'I':
+            info += 'Máy rửa bát lắp âm bán phần (màn hình hiển thị lộ ra ngoài).\n';
+            break;
+        case 'S':
+            info += 'Máy rửa bát độc lập.\n';
+            break;
+        case 'U':
+            info += 'Máy rửa bát âm tủ, mặt inox.\n';
+            break;
+        case 'V':
+            info += 'Máy rửa bát âm tủ hoàn toàn.\n';
+            break;
+        case 'Z':
+            info += 'Sản phẩm máy rửa bát Bosch với phụ kiện đặc biệt.\n';
+            break;
+        default:
+            return 'Mã không hợp lệ. Ký tự thứ ba không hợp lệ.';
+    }
+
+    // Ký tự thứ tư
+    switch (code[3]) {
+        case '2':
+            info += 'Series 2\n';
+            break;
+        case '4':
+            info += 'Series 4\n';
+            break;
+        case '6':
+            info += 'Series 6\n';
+            break;
+        case '8':
+            info += 'Series 8\n';
+            break;
+        default:
+            return 'Mã không hợp lệ. Ký tự thứ tư không hợp lệ.';
+    }
+
+    // Ký tự thứ năm
+    switch (code[4]) {
+        case '3':
+            info += '3 chương trình rửa\n';
+            break;
+        case '4':
+            info += '4 chương trình rửa\n';
+            break;
+        case '5':
+            info += '5 chương trình rửa\n';
+            break;
+        case '6':
+            info += '6 chương trình rửa\n';
+            break;
+        default:
+            return 'Mã không hợp lệ. Ký tự thứ năm không hợp lệ.';
+    }
+
+    // Ký tự thứ sáu
+    switch (code[5]) {
+        case 'A':
+        case 'B':
+            info += 'Giỏ nhựa\n';
+            break;
+        case 'C':
+        case 'D':
+            info += 'Giỏ kim loại\n';
+            break;
+        case 'E':
+        case 'F':
+            info += 'Giỏ nhựa (Vario VS)\n';
+            break;
+        case 'I':
+        case 'J':
+            info += 'Giỏ kim loại (VarioFlex không VS)\n';
+            break;
+        default:
+            return 'Mã không hợp lệ. Ký tự thứ sáu không hợp lệ.';
+    }
+
+    // Ký tự thứ bảy
+    switch (code[6]) {
+        case 'I':
+            info += 'Màu bạc Inox\n';
+            break;
+        case 'M':
+            info += 'Màu nâu cà phê\n';
+            break;
+        case 'S':
+            info += 'Màu thép không gỉ\n';
+            break;
+        case 'X':
+            info += 'Màu đặc biệt\n';
+            break;
+        case 'B':
+            info += 'Màu đen\n';
+            break;
+        case 'W':
+            info += 'Màu trắng\n';
+            break;
+        default:
+            return 'Mã không hợp lệ. Ký tự thứ bảy không hợp lệ.';
+    }
+
+    // Ký tự thứ tám
+    info += 'Ký tự thứ tám: ' + code[7] + '\n';
+
+    // Ký tự thứ chín
+    switch (code[8]) {
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '7':
+        case '8':
+        case '9':
+            info += 'Không sử dụng Home connect\n';
+            break;
+        case '6':
+            info += 'Sử dụng Home connect\n';
+            break;
+        default:
+            return 'Mã không hợp lệ. Ký tự thứ chín không hợp lệ.';
+    }
+
+    // Ký tự thứ mười
+    switch (code[9]) {
+        case 'A':
+            info += 'Thị trường Áo\n';
+            break;
+        case 'N':
+            info += 'Thị trường Hà Lan\n';
+            break;
+        case 'B':
+            info += 'Thị trường Ả Rập/Iran\n';
+            break;
+        case 'P':
+            info += 'Thị trường Châu Á Thái Bình Dương\n';
+            break;
+        case 'C':
+            info += 'Thị trường Trung Quốc\n';
+            break;
+        case 'Q':
+            info += 'Thị trường Trung Á\n';
+            break;
+        case 'D':
+            info += 'Thị trường Đức\n';
+            break;
+        case 'E':
+            info += 'Thị trường Châu Âu\n';
+            break;
+        case 'R':
+            info += 'Thị trường Nga\n';
+            break;
+        case 'F':
+            info += 'Thị trường Pháp\n';
+            break;
+        case 'S':
+            info += 'Thị trường bán đảo Scandinavia (Bắc Âu)\n';
+            break;
+        case 'G':
+            info += 'Thị trường Vương quốc Anh\n';
+            break;
+        case 'T':
+            info += 'Thị trường Thổ Nhĩ Kỳ\n';
+            break;
+        case 'H':
+            info += 'Thị trường Thụy Sĩ\n';
+            break;
+        case 'U':
+            info += 'Thị trường Mỹ/Canada\n';
+            break;
+        case 'I':
+            info += 'Thị trường Ấn Độ\n';
+            break;
+        case 'W':
+            info += 'Thị trường Đài Loan 220V\n';
+            break;
+        case 'J':
+            info += 'Thị trường Italia\n';
+            break;
+        case 'X':
+            info += 'Thị trường Đài Loan 110V\n';
+            break;
+        case 'K':
+            info += 'Thị trường Ukraine\n';
+            break;
+        case 'Z':
+            info += 'Thị trường Nam Phi\n';
+            break;
+        case 'L':
+            info += 'Thị trường Nam Mỹ\n';
+            break;
+        case '6':
+            info += 'Thị trường Nhật Bản\n';
+            break;
+        case 'M':
+            info += 'Thị trường Trung Đông\n';
+            break;
+        default:
+            return 'Mã không hợp lệ. Ký tự thứ mười không hợp lệ.';
+    }
+
+    return info;
+}
+
+$(document).ready(function () {
+  var input = document.getElementById("input");
+  var result = document.getElementById("result");
+  var button = document.getElementById("button");
+  button.addEventListener("click", function() {
+    // Get input value
+    var code = input.value;
+    if (!code) {
+      result.innerHTML = "Nhập mã sp";
+    } else {
+      result.innerHTML = getDishwasherInfo(code.toUpperCase());
+    }
+
+  });
+});
+  </script>
 </body>
 </html>
